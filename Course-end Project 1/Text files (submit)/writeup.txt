@@ -1,0 +1,66 @@
+Explanation:
+------------
+
+1.Create a New ASP.NET Core MVC Project 
+	1. Open Visual Studio 
+	2. Click on "Create a new project." 
+	3. Select "ASP.NET Core Web Application" as the project template. 
+	4. Choose "Web Application (Model-View-Controller)" as the project type. 
+	5. Click "Create."
+
+2.Check Docker Support 
+	1. Right-click on the project in Solution Explorer 
+	2. Select "Add" > "Docker Support." 
+
+3.Create an Azure SQL Database 
+	1. Log in to the Azure portal (https://portal.azure.com). 
+	2. Create a new Azure SQL Database named "Loggerdb." 
+	3. Inside the database, create two tables: "CustLogInfo" and "UserInfo" according to your project requirements. 
+
+4.Scaffold the Database and Configure Connection String 
+	1. Tool->Manage NuGet Packages->Scaffold. 
+	2. Configure the database connection and select the tables you want to scaffold. 
+	3. After scaffolding, copy the connection string from the `DbContext` that was created by the scaffolding. 
+	4. Open the `appsettings.json` file and add the connection string under the "ConnectionStrings" section. 
+	5.. Update the `Program.cs` file to use the connection string name in the `AddDbContext` method. 
+
+5.Create Controllers and Views 
+	1. Create controllers and views for "CustLogInfoes" and "UserInfoes" to match your project requirements. 
+	2. Customize the views and controller actions according to your needs. 
+
+6.Install the NUnit,Nunitest3adapter and Moq Packages 
+	1. In the Solution Explorer, right-click on your test project and select "Manage NuGet Packages..." 
+	2. In the "Browse" tab, search for "NUnit" and install the "NUnit"and Nunitest3adapter package. This package provides the NUnit testing framework. 
+	3. Similarly, search for "Moq" and install the "Moq" package. This package provides the Moq mocking framework. 
+	4. Run the test. 
+
+7.Run the Project and Test 
+	1. Build and run the project to ensure it correctly stores data in the Azure SQL Database. 
+	2. Test the functionality of your application by adding and retrieving data. 
+	3. Make any necessary adjustments and bug fixes. 
+
+8.Dockerize the Project 
+	1. Choose the appropriate configuration for your Docker container. 
+	2. Build and run the Docker container to check if it's correctly running. 
+
+Commands: 
+docker build -t custom-image -f "F:\PHASE-4\Assessment\Course-end Project 1\CustomSupport\CustomSupport\Dockerfile" .
+docker run -it --rm -p 5200:80 --name loggercontainer custom-image
+
+9.Set Up Jenkins and Create a Freestyle
+	1. Ensure Jenkins is installed and running locally or on a server. 
+	2. Access the Jenkins dashboard at http://localhost:5200 
+	3. Create a new Jenkins account or log in if you already have one. 
+	4. Create a new Jenkins job by clicking "New Item." 
+	5. Choose "freestyle" as the job type. 
+	6. In the freestyle section, choose "SCM". 
+	7. In SCM, choose "Git" and provide the URL of your Git repository. 
+	8. Click "Save" to create the Jenkins job. 
+	9. Trigger the job manually by clicking "Build Now. 
+	10. Jenkins will run the build, test, and publish stages defined in your Jenkinsfile. 
+	11. Check the Jenkins job's console output for build and deployment results. 
+	12. Commit made in the GitHub will reflect in the Jenkins if its successful.
+
+
+
+GitHub Link:
